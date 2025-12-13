@@ -1,0 +1,24 @@
+.icon{
+    width: 20px;
+    height: 20px;
+    mask-image: url(/icons/ICON.svg);
+    mask-repeat: no-repeat;
+    background-color: white;
+}
+.icon-default {
+    width: 20px;
+    height: 20px;
+    background: url(/icons/ICON.svg) no-repeat;
+    
+}
+
+.icon-sb-recrument{
+    width: 20px;
+    height: 20px;
+    mask-position: -98px -114px ;
+}
+.icon-logout{
+    width: 54px;
+    height: 54px;
+    mask-position: -190px -113px ;
+}

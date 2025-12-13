@@ -1,0 +1,41 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+
+}
+.container {
+    width: auto;
+    height: 100vh;
+    background-color: rgb(188, 237, 40);
+}
+.container .header {
+    height: 48px;
+    background-color: #ed1616;
+  
+}
+.header .header-left, .header .header-right {
+    background-color: blue;
+    width: 300px;
+    height: 80%;
+}
+.container .content {
+    height: calc(100vh - 48px);
+    background-color: rgb(30, 37, 31);
+}
+.content .sidebar {
+    width: 233px;
+    height: 100%;
+    background-color: rgb(222, 144, 49);
+}
+.content .main-content {
+    background-color: rgb(73, 248, 245);
+}
+.sidebar .sidebar-icon {
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+   
+}
