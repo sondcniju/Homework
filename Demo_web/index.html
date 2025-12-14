@@ -2,33 +2,38 @@
 <html>
 
 <head>
-    <title>Page Title</title>
+    <title>Quản lý Ứng viên</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/icons.css">
-
 </head>
 
 <body>
-    <!-- container -->
     <div class="container display-flex flex-direction-column">
-        <!-- header -->
         <div class="header display-flex justify-content-between align-items-center">
-            <div class="header-left display-flex justify-content-between align-items-center ">
-                <div class="icon icon-details "></div>
-                <div class="icon icon-view"></div>
-                <div class="display-flex">Tuyen dung</div>
-                <div class="shadow-box"></div>
+            <div class="header-left display-flex align-items-center">
+                <div class="icon icon-details"></div>
+                <div class="header-search-bar display-flex align-items-center">
+                    <div class="icon icon-search small"></div>
+                    <input type="text" placeholder="Tìm kiếm thông tin ứng viên, ứng viên nhàn,..." class="search-input">
+                </div>
+                <div class="app-title">Tuyển dụng</div>
             </div>
-            <div class="header-right display-flex align-items-center ">
-                <div class="icon icon-word"></div>
-                <div class="display-flex align-items-center">Website tuyển dụng</div>
-                <div class="icon icon-word"></div>
-                <div class="icon icon-word"></div>
-                <div class="icon icon-word"></div>
+            <div class="header-right display-flex align-items-center">
+                <div class="display-flex align-items-center header-website-link">
+                    <div class="icon icon-word"></div>
+                    <span>Website tuyển dụng</span>
+                </div>
+                <div class="icon icon-word header-icon-circle"></div>
+                <div class="icon icon-word header-icon-circle"></div>
+                <div class="icon icon-word header-icon-circle"></div>
+                <div class="icon icon-word header-icon-circle"></div>
+                <button class="add-candidate-btn header-main-action display-flex align-items-center" onclick="showPopup()">
+                    <span class="icon-plus icon"></span>
+                    Thêm ứng viên
+                </button>
             </div>
         </div>
-        <!-- content -->
         <div class="content flex display-flex">
             <div class="sidebar">
                 <div class="sidebar-list">
@@ -37,7 +42,7 @@
                             <div class="icon icon-sb-recrument"></div>
                             <span>Tuyển dụng</span>
                         </div>
-                        <div class="sidebar-icon-item display-flex align-items-center">
+                        <div class="sidebar-icon-item active display-flex align-items-center">
                             <div class="icon icon-candidate"></div>
                             <span>Ứng viên</span>
                         </div>
@@ -47,11 +52,11 @@
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
                             <div class="icon icon-storage"></div>
-                            <span>Lưu trữ</span>
+                            <span>Kho tiềm năng</span>
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
-                            <div class="icon icon-marketing"></div>
-                            <span>Marketing</span>
+                            <div class="icon icon-sb-recrument"></div>
+                            <span>Chiến dịch tuyển dụng</span>
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
                             <div class="icon icon-job"></div>
@@ -59,11 +64,11 @@
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
                             <div class="icon icon-aimarketing"></div>
-                            <span>AI Marketing</span>
+                            <span>eMarketing</span>
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
                             <div class="icon icon-chat"></div>
-                            <span>Chat</span>
+                            <span>Trao đổi với ứng viên</span>
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
                             <div class="icon icon-report"></div>
@@ -71,94 +76,170 @@
                         </div>
                         <div class="sidebar-icon-item display-flex align-items-center">
                             <div class="icon icon-settings"></div>
-                            <span>Cài đặt</span>
+                            <span>Thiết lập</span>
                         </div>
-                        <div class="sidebar-icon-item display-flex align-items-center">
+                        <div class="sidebar-icon-item display-flex align-items-center sidebar-footer-img">
                             <div class="icon icon-ideas"></div>
-                            <span>Ý tưởng</span>
+                            <span>Thu gọn</span>
                         </div>
                     </div>
-                </div>   
-                    
-                
+                </div>
             </div>
-            <div class="main-content flex">
-                        <button class="add-candidate-btn" onclick="showPopup()">Thêm Ứng viên</button>
 
-                        <!-- Popup Modal -->
-                        <div id="popup" class="popup-overlay" style="display: none;">
-                            <div class="popup-content">
-                                <span class="close-btn" onclick="hidePopup()">&times;</span>
-                                <h2>Thêm Ứng viên</h2>
-                                <form id="candidate-form">
-                                    <h3>Thông tin cá nhân</h3>
-                                    <label for="name">Họ tên:</label>
-                                    <input type="text" id="name" name="name" required><br><br>
-                                    
-                                    <label for="email">Email:</label>
-                                    <input type="email" id="email" name="email" required><br><br>
-                                    
-                                    <label for="phone">Số điện thoại:</label>
-                                    <input type="tel" id="phone" name="phone" required><br><br>
-                                    
-                                    <label for="address">Địa chỉ:</label>
-                                    <input type="text" id="address" name="address"><br><br>
-                                    
-                                    <h3>Học vấn</h3>
-                                    <label for="education">Trình độ học vấn:</label>
-                                    <select id="education" name="education">
-                                        <option value="Cao đẳng">Cao đẳng</option>
-                                        <option value="Đại học">Đại học</option>
-                                        <option value="Thạc sĩ">Thạc sĩ</option>
-                                        <option value="Tiến sĩ">Tiến sĩ</option>
-                                    </select><br><br>
-                                    
-                                    <label for="school">Trường học:</label>
-                                    <input type="text" id="school" name="school"><br><br>
-                                    
-                                    <label for="major">Ngành học:</label>
-                                    <input type="text" id="major" name="major"><br><br>
-                                    
-                                    <h3>Nơi việc đã làm</h3>
-                                    <label for="company">Công ty:</label>
-                                    <input type="text" id="company" name="company"><br><br>
-                                    
-                                    <label for="position">Vị trí:</label>
-                                    <input type="text" id="position" name="position"><br><br>
-                                    
-                                    <label for="duration">Thời gian làm việc:</label>
-                                    <input type="text" id="duration" name="duration" placeholder="Ví dụ: 2020-2023"><br><br>
-                                    
-                                    <button type="submit">Lưu</button>
-                                </form>
+            <div class="main-content flex">
+                <div class="page-header display-flex justify-content-between align-items-center">
+                    <h1 class="page-title">Ứng viên</h1>
+                </div>
+
+                <div class="candidate-list-card">
+                    <div class="table-action-bar display-flex justify-content-between align-items-center">
+                        <div class="table-search display-flex align-items-center">
+                            <input type="text" placeholder="Tìm kiếm nhanh danh sách" class="table-search-input">
+                            <div class="icon icon-search small"></div>
+                        </div>
+                        <div class="table-filters display-flex align-items-center">
+                            <div class="icon icon-word table-filter-icon" title="Lọc"></div>
+                            <div class="icon icon-word table-filter-icon" title="Cấu hình cột"></div>
+                            <div class="icon icon-word table-filter-icon" title="Xuất Excel"></div>
+                            <div class="icon icon-word table-filter-icon" title="Thao tác khác"></div>
+                        </div>
+                    </div>
+
+                    <table class="candidate-table" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th class="col-checkbox"><input type="checkbox"></th>
+                                <th class="col-name">Họ và tên</th>
+                                <th class="col-phone">Số điện thoại</th>
+                                <th class="col-email">Email</th>
+                                <th class="col-campaign">Chiến dịch tuyển dụng</th>
+                                <th class="col-position">Vị trí tuyển dụng</th>
+                                <th class="col-round">Vòng tuyển dụng</th>
+                                <th class="col-rating">Đánh giá</th>
+                                <th class="col-date">Ngày ứng tuyển</th>
+                                <th class="col-actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-checkbox"><input type="checkbox" checked></td>
+                                <td class="col-name display-flex align-items-center">Lê Mạnh Hùng</td>
+                                <td class="col-phone"></td>
+                                <td class="col-email"></td>
+                                <td class="col-campaign"></td>
+                                <td class="col-position">QC/Tester/Kiểm thử phần...</td>
+                                <td class="col-round">Đã duyển</td>
+                                <td class="col-rating">⭐⭐⭐⭐</td>
+                                <td class="col-date">24/10/2025</td>
+                                <td class="col-actions">...</td>
+                            </tr>
+                            <tr class="row-highlight-success">
+                                <td class="col-checkbox"><input type="checkbox" checked></td>
+                                <td class="col-name display-flex align-items-center">
+                                    Nguyễn Minh Phong
+                                    <span class="status-tag tag-nhan-vien">Nhân viên</span>
+                                </td>
+                                <td class="col-phone"></td>
+                                <td class="col-email">dfttae.test02@gmail.com</td>
+                                <td class="col-campaign"></td>
+                                <td class="col-position">QC/Tester/Kiểm thử phần...</td>
+                                <td class="col-round">Đã duyển</td>
+                                <td class="col-rating">⭐⭐⭐⭐</td>
+                                <td class="col-date">18/07/2025</td>
+                                <td class="col-actions">...</td>
+                            </tr>
+                            <tr class="row-highlight-error">
+                                <td class="col-checkbox"><input type="checkbox" checked></td>
+                                <td class="col-name display-flex align-items-center">
+                                    Tạ Long Khánh
+                                    <span class="status-tag tag-nghi-viec">Đã xuất việc</span>
+                                </td>
+                                <td class="col-phone"></td>
+                                <td class="col-email">trangthu.tester@gmail.com</td>
+                                <td class="col-campaign"></td>
+                                <td class="col-position">QC/Tester/Kiểm thử phần...</td>
+                                <td class="col-round">Offer</td>
+                                <td class="col-rating">⭐⭐⭐⭐</td>
+                                <td class="col-date">18/08/2025</td>
+                                <td class="col-actions">...</td>
+                            </tr>
+                            <tr class="row-highlight-success">
+                                <td class="col-checkbox"><input type="checkbox" checked></td>
+                                <td class="col-name display-flex align-items-center">
+                                    Lại Cẩm Linh
+                                    <span class="status-tag tag-nhan-vien">Nhân viên</span>
+                                </td>
+                                <td class="col-phone">0962 900 918</td>
+                                <td class="col-email">camlinh.lai27@gmail.com</td>
+                                <td class="col-campaign"></td>
+                                <td class="col-position">Nhân viên kinh doanh HC...</td>
+                                <td class="col-round">Đã duyển</td>
+                                <td class="col-rating">⭐⭐⭐⭐</td>
+                                <td class="col-date">18/08/2025</td>
+                                <td class="col-actions">...</td>
+                            </tr>
+                             <tr class="row-highlight-error">
+                                <td class="col-checkbox"><input type="checkbox" checked></td>
+                                <td class="col-name display-flex align-items-center">
+                                    Trần Thị Mỹ Duyên
+                                    <span class="status-tag tag-nghi-viec">Lỗi</span>
+                                </td>
+                                <td class="col-phone">0942 527 358</td>
+                                <td class="col-email">myduyenksie@gmail.com</td>
+                                <td class="col-campaign"></td>
+                                <td class="col-position">QC/Tester/Kiểm thử phần...</td>
+                                <td class="col-round">TH tuyển</td>
+                                <td class="col-rating">⭐⭐⭐⭐</td>
+                                <td class="col-date">27/08/2025</td>
+                                <td class="col-actions">...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="table-footer display-flex justify-content-between align-items-center">
+                        <div class="total-records">Tổng: 5362 bản ghi</div>
+                        <div class="pagination display-flex align-items-center">
+                            <span>Số bản ghi/trang: 25</span>
+                            <div class="pagination-controls">
+                                <button>&lt;</button>
+                                <button>1</button>
+                                <button>&gt;</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div id="popup" class="popup-overlay" style="display: none;">
+                    <div class="popup-content">
+                        </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
 
-            <script>
-                function showPopup() {
-                    document.getElementById('popup').style.display = 'flex';
-                }
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
 
-                function hidePopup() {
-                    document.getElementById('popup').style.display = 'none';
-                }
+        // Đóng popup khi click ngoài
+        window.onclick = function(event) {
+            var popup = document.getElementById('popup');
+            if (event.target == popup) {
+                popup.style.display = 'none';
+            }
+        }
 
-                // Đóng popup khi click ngoài
-                window.onclick = function(event) {
-                    var popup = document.getElementById('popup');
-                    if (event.target == popup) {
-                        popup.style.display = 'none';
-                    }
-                }
-
-                // Xử lý form submit (tạm thời chỉ alert)
-                document.getElementById('candidate-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    alert('Thông tin đã được lưu!');
-                    hidePopup();
-                });
-            </script>
+        // Xử lý form submit (tạm thời chỉ alert)
+        document.getElementById('candidate-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thông tin đã được lưu!');
+            hidePopup();
+        });
+    </script>
 </body>
 
 </html>
