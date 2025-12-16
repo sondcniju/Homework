@@ -1,4 +1,4 @@
-.icon{
+﻿.icon{
     width: 20px;
     height: 20px;
     background: url(../icons/ICON.svg) no-repeat;
@@ -72,9 +72,9 @@
     background-position: -2px -138px;
 }
 .icon-ideas{
-    width: 20px;
-    height: 20px;
-    background-position: -244px -894px;
+    width: 24px;
+    height: 24px;
+    background-image: url(/Demo_web/icons/idea.svg);
     
 }
 .icon-details{
@@ -86,20 +86,89 @@
     width: 54px;
     height: 54px;
     background-position: -53px -411px;
-    transform: scale(0.5);
-    
+    transform: scale(0.6);
+    margin-left: 24px;
+    margin-top: -4PX;
+}
+.icon-func{
+    width: 20px;
+	height: 18px;
+    background-position: -13px -47px;
+    margin-left: 20px;
+    filter: brightness(0) invert(1);
 }
 
 .icon-search{
-    width: 23px;
-    height: 23px;
-    background-position: -169px -113px;
+    width: 14px;
+    height: 14px;
+    background-position: -283px -945px;
+    margin-top: 10px;
 }
 .icon-word{
     width: 21px;
     height: 21px;
     background-position: 0 -608px;
+    margin-top: 20px;
 }
+.icon-bell{
+    width: 21px;
+    height: 21px;
+    background-position: -212px -942px;
+}
+.icon-question{
+    width: 20px;
+    height: 20px;
+    background-position: -236px -942px;
+}
+.icon-dot{
+    width: 20px;
+    height: 20px;
+    background-position: -260px -942px;
+}
+.icon-cart {
+	width: 20px;
+	height: 20px;
+    background-image: url(/Demo_web/icons/cs-icon-store.svg);
+}
+.icon-tripdot {
+	width: 18px;
+	height: 18px;
+    background-position: -75px -847px;
+}
+.icon-invite {
+	width: 24px;
+	height: 24px;
+    background-image: url(/Demo_web/icons/chat.svg);
+}
+
+.icon-person {
+	width: 24px;
+	height: 24px;
+    background-image: url(/Demo_web/icons/download.svg);
+}
+.icon-speaker {
+    width: 24px;
+	height: 24px;
+	background-image: url(/Demo_web/icons/icon-notification-version.d5e3dc604036ed5b.svg);
+}
+
+.icon-collapse{
+    width: 9px;
+	height: 14px;
+    background-position: -199px -141px;
+}
+.icon-exten{
+    width: 9px;
+	height: 14px;
+    background-position: -223px -141px;
+}
+
+.icon-extra{
+    width: 16px;
+	height: 4px;
+    background-position: -362px -624px;
+}
+
 .icon-view-color{
     color: black;
 }

@@ -1,0 +1,95 @@
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    border-radius: 10px;
+    width: 560px;
+    height: auto;
+    max-height: 558.6px;
+    min-height: 0px;
+    overflow: auto;
+    padding: 20px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #999;
+}
+
+#candidate-form label {
+    font-size: 13px;
+    color: #555;
+}
+
+#candidate-form input,
+#candidate-form select,
+#candidate-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-top: 6px;
+}
+
+.drag-drop-area {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    background: #f8f9fb;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.form-content{
+    display: flex;
+}
+.form-image{
+    padding-top: 15px;
+
+}
+.form-basic{
+    margin: 8px;
+}
+
+.form-group-image {
+    width: 63px;
+    height: 63px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #f8f9fb;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+}
+
+.input-with-icon,
+.input-with-icon-range {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-with-icon .calendar-icon,
+.input-with-icon-range .calendar-icon {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    font-style: normal;
+    color: var(--muted);
+}

@@ -4,6 +4,9 @@
 .justify-center {
     justify-content: center;
 }
+.justify-flex-end {
+    justify-content: flex-end;
+}
 .align-items-center {
     align-items: center;
 }
@@ -15,6 +18,9 @@
 }
 .flex-direction-column {
     flex-direction: column;
+}
+.flex-direction-row {
+    flex-direction: row-reverse;
 }
 .flex {
     flex: 1;
