@@ -2,8 +2,6 @@
     width: 20px;
     height: 20px;
     background: url(../icons/ICON.svg) no-repeat;
-    display: inline-block;
-    margin-bottom: 12px;
     
 }
 .icon-default {
@@ -38,7 +36,6 @@
     width: 22px;
     height: 21px;
     background-position: -73px -633px;
-    filter: brightness(0);
     
 
 }
@@ -48,12 +45,10 @@
     background-position: -338px -113px;
 }
 .icon-aimarketing{
-    width: 14px;
-    height: 12px;
-    background-position: -209px -2px;
-    filter: brightness(0);
-    transform: scale(1.2);
-    
+    width: 16px;
+    height: 13px;
+    background-position:  -262px -660px;
+    transform: scale(1);    
 }
 .icon-chat{
     width: 18px;
@@ -91,24 +86,21 @@
     margin-top: -4PX;
 }
 .icon-func{
-    width: 20px;
-	height: 18px;
-    background-position: -13px -47px;
-    margin-left: 20px;
-    filter: brightness(0) invert(1);
+    width: 24px;
+	height: 24px;
+    min-width: 24px;
+    background-image: url(/Demo_web/icons/switch.svg);
 }
 
 .icon-search{
     width: 14px;
     height: 14px;
     background-position: -283px -945px;
-    margin-top: 10px;
 }
 .icon-word{
     width: 21px;
     height: 21px;
     background-position: 0 -608px;
-    margin-top: 20px;
 }
 .icon-bell{
     width: 21px;
@@ -168,7 +160,25 @@
 	height: 4px;
     background-position: -362px -624px;
 }
+.icon-ava{
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #f8f9fb;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+}
 
+.icon-shorten{
+    width: 9px;
+	height: 14px;
+    background-position: -199px -141px;
+        filter: brightness(0);
+
+}
 .icon-view-color{
     color: black;
 }
+
