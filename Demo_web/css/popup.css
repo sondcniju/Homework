@@ -8,6 +8,13 @@
     z-index: 3000;
 }
 
+.popup-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 24px 16px 0 24px;
+
+}
+
 .popup-content {
     background: #fff;
     border-radius: 5px;
@@ -16,17 +23,41 @@
     max-height: 558.6px;
     min-height: 0px;
     overflow: auto;
-    padding: 20px;
     position: relative;
 }
-.popup-footer{
+
+.popup-footer {
     width: 100% !important;
     height: 56px !important;
     padding: 9px 24px !important;
     border-top: 1px solid #dddde4;
     background-color: #f1f2f5 !important;
+    position: sticky;
+    z-index: 1;
 }
 
+.pop-cancel-btn {
+    width: 72px;
+    height: 36px;
+    position: relative;
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pop-save-btn {
+    width: 72px;
+    height: 36px;
+    border: none;
+    position: relative;
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 .close-btn {
     position: absolute;
     top: 12px;
@@ -36,8 +67,16 @@
     color: #999;
 }
 
+#candidate-form {
+    padding: 24px;
+    flex: 1 1 auto;
+    /* cho nó chiếm phần còn lại */
+    overflow: auto;
+    /* scroll nằm ở đây (khuyến nghị) */
+}
+
 #candidate-form label {
-    font-size: 13px;
+    font-size: 14px;
     color: #555;
 }
 
@@ -75,21 +114,25 @@
     margin-top: 4px;
 }
 
-.form-content{
+.form-content {
     display: flex;
 }
-.form-row{
+
+.form-row {
     display: flex;
     flex-direction: column;
 }
-.form-group-half{
+
+.form-group-half {
     display: flex;
 }
-.form-image{
+
+.form-image {
     padding-top: 15px;
 
 }
-.form-basic{
+
+.form-basic {
     margin: 8px;
 }
 

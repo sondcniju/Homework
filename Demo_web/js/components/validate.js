@@ -3,6 +3,7 @@
     const VALID_GENDERS = new Set(['', 'male', 'female', 'other']);
     const VALID_AREAS = new Set(['', 'hn', 'hcm']);
 
+    // Lay gia tri trim va gan lai vao form
     function getValue(form, name) {
         const control = form.elements[name];
         if (!control) return '';
@@ -11,6 +12,7 @@
         return value;
     }
 
+    // Xoa trang thai loi truoc do
     function clearValidationState(form) {
         form.querySelectorAll('.input-error').forEach(function (el) {
             el.classList.remove('input-error');
@@ -20,6 +22,7 @@
         });
     }
 
+    // Danh dau loi va hien thong bao ben duoi field
     function flagError(field, message) {
         if (!field) return;
         field.classList.add('input-error');
@@ -30,6 +33,7 @@
         (container || field).appendChild(error);
     }
 
+    // Dong goi payload chi gom field can validate
     function buildPayload(form) {
         return {
             name: getValue(form, 'name'),
@@ -39,6 +43,7 @@
         };
     }
 
+    // Kiem tra hop le cua payload
     function validatePayload(payload) {
         const errors = {};
 
@@ -61,6 +66,7 @@
         };
     }
 
+    // Xu ly submit form ung vien
     function handleCandidateSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -86,6 +92,7 @@
         form.reset();
     }
 
+    // Gan validator cho form khi DOM san
     function initValidation() {
         const form = document.getElementById('candidate-form');
         if (!form) return;

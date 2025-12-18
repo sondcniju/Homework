@@ -1,4 +1,5 @@
-﻿:root {
+﻿/* Bien mau va token */
+:root {
     --primary: #2f80ed;
     --primary-dark: #2567c6;
     --sidebar-start: #3c4652;
@@ -13,10 +14,12 @@
     --safe: #f5fbf2;
 }
 
+/* Reset box sizing */
 * {
     box-sizing: border-box;
 }
 
+/* Co ban html body */
 html,
 body {
     margin: 0;
@@ -26,11 +29,12 @@ body {
     background: var(--bg);
     color: var(--text);
     overflow: hidden;
-    /* chặn scroll toàn trang */
+    /* chan scroll toan trang */
 }
 
+/* Khung ung dung */
 .app {
-   height: 100vh;
+    height: 100vh;
     padding: 0;
     width: 100%;
     position: fixed;
@@ -39,14 +43,15 @@ body {
     overflow: auto;
 }
 
+/* Header ung dung */
 .app-header {
     height: 48px;
     background: #fff;
     border-bottom: 1px solid var(--border);
-    padding: 0 16px;
-
+    gap: 16px
 }
 
+/* Than ung dung */
 .app-body {
     position: relative;
     height: calc(100% - 56px);
@@ -57,33 +62,34 @@ body {
     z-index: -1;
 }
 
+/* Vung logo ben trai header */
 .header-left {
-    width: 212px;
-    height: 48px;
-
-    gap: 10px;
+    display: flex;
+    align-items: center;
     flex-shrink: 0;
-    margin-right: 12px;
+    width: auto;
+    min-width: 212px;
 }
 
+/* Nut phan header trai */
 .header-left-btn {
     height: 100%;
-    /* 👈 quan trọng */
     min-width: 260px;
-    /* bằng sidebar (hoặc 180–260 tuỳ bạn) */
     background-image: url("/Demo_web/images/navbar-bg-noel.ff04816e6511986f.svg");
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
     padding-left: 16px;
     border-radius: 5px;
-    /* 👈 bo tròn */
     margin: -16px;
-    /* 👈 tạo khoảng để thấy bo góc */
     overflow: hidden;
-    /* 👈 bắt buộc để background không tràn */
+    /* bat buoc de background khong tran */
 }
 
+/* Tieu de header */
+.header-text {
+     min-width:0;    
+}
 .header-text .header-name {
     color: #1f1f1f;
     font-size: 18px;
@@ -96,12 +102,14 @@ body {
     white-space: nowrap;
 }
 
+/* Icon trang tri header */
 .header-icon {
     position: relative;
     height: 48px;
     width: 103px;
 }
 
+/* Nen icon trang tri */
 .header-icon::before {
     content: "";
     position: absolute;
@@ -114,11 +122,13 @@ body {
     pointer-events: none;
 }
 
+/* Lop icon thuc te */
 .header-icon .icon-view {
     position: absolute;
     z-index: 0;
 }
 
+/* Nut chuc nang chung */
 .func-btn {
     border: none;
     background-color: transparent;
@@ -126,6 +136,7 @@ body {
     margin-left: 16px;
 }
 
+/* Thanh tim kiem header */
 .header-search-bar {
     flex: 1;
     min-width: 365px;
@@ -135,9 +146,9 @@ body {
     border-radius: 3px;
     padding: 6px 16px;
     height: 32px;
-
 }
 
+/* O nhap tim kiem */
 .header-search-bar .search-input {
     border: none;
     outline: none;
@@ -149,6 +160,7 @@ body {
     padding-bottom: 1px;
 }
 
+/* Cum ben phai header */
 .header-right {
     gap: 30px;
     width: auto;
@@ -158,15 +170,18 @@ body {
     align-items: center;
 }
 
+/* Nhom link website */
 .website {
     display: inline-flex;
     gap: 20px;
 }
 
+/* Danh sach icon header */
 .header-icons {
     gap: 20px;
 }
 
+/* Noi dung chinh */
 .main-content {
     flex: 1;
     padding: 16px 18px;
@@ -175,19 +190,23 @@ body {
     min-height: 0;
 }
 
+/* Thanh tieu de trang */
 .page-bar {
     margin-bottom: 10px;
 }
 
+/* Tieu de trang */
 .page-title {
     font-size: 20px;
     font-weight: 700;
 }
 
+/* Hanh dong trang */
 .page-actions {
     gap: 10px;
 }
 
+/* Nut primary */
 .primary-btn {
     background: var(--primary);
     color: #fff;
@@ -200,17 +219,20 @@ body {
     gap: 10px;
 }
 
+/* Trang thai hover nut primary */
 .primary-btn:hover {
     background: var(--primary-dark);
 }
 
+/* Icon trong nut primary */
 .primary-btn .btn-icon {
     font-size: 18px;
     line-height: 0;
 }
 
+/* Mui ten trong nut primary */
 .primary-btn .btn-caret {
     font-size: 12px;
     opacity: .9;
-    
+
 }

@@ -1,11 +1,13 @@
-// Thu thập dữ liệu ứng viên từ form và log/return payload
+// Thu thap du lieu ung vien tu form va log ra console
 (function () {
+    // Lay gia tri trim tu input theo ten truong
     function getValue(form, name) {
         const el = form.elements[name];
         if (!el) return '';
         return (el.value || '').trim();
     }
 
+    // Dong goi payload ung vien de phuc vu luu/kiem tra
     function collectCandidateData(form) {
         return {
             name: getValue(form, 'name'),
@@ -31,20 +33,21 @@
         };
     }
 
+    // Gan submit event de thu thap du lieu phuc vu debug
     function wireCandidateCollector() {
         const form = document.getElementById('candidate-form');
         if (!form) return;
 
         form.addEventListener('submit', function (e) {
-            // chỉ thu thập dữ liệu, không chặn luồng validate/hide đã có
+            // Chi log du lieu, khong thay the luong validate/save hien co
             const data = collectCandidateData(form);
             console.log('Candidate data:', data);
-            window.latestCandidateData = data; // tiện debug/truy xuất sau
+            window.latestCandidateData = data; // tien debug/truy xuat sau
         });
     }
 
     document.addEventListener('DOMContentLoaded', wireCandidateCollector);
 
-    // public helper (nếu cần lấy theo yêu cầu khác)
+    // public helper (neu can lay theo yeu cau khac)
     window.collectCandidateData = collectCandidateData;
 })();

@@ -5,12 +5,14 @@
     let allCandidates = [];
     let selectionWired = false;
 
+    // Chuan hoa gia tri hien thi rong
     function safe(value) {
         if (value === null || value === undefined) return '--';
         const str = String(value).trim();
         return str === '' ? '--' : str;
     }
 
+    // Dinh dang ngay ve dd/MM/yyyy
     function formatDate(value) {
         if (!value) return '--';
         const date = new Date(value);
@@ -21,6 +23,7 @@
         return `${day}/${month}/${year}`;
     }
 
+    // Lay chu cai dau ho va ten lam avatar
     function initials(name) {
         if (!name) return '?';
         const parts = name.trim().split(/\s+/);
@@ -29,6 +32,7 @@
         return (first + last || first).toUpperCase();
     }
 
+    // Quy doi diem 0-100 ve thang 0-5
     function normalizeScore(score) {
         const raw = Number(score) || 0;
         // dữ liệu có thể 0-100, quy về 0-5 sao
@@ -36,11 +40,13 @@
         return Math.min(5, Math.max(0, normalized));
     }
 
-    function renderRow(item) {
+    // Tao HTML cho mot dong ung vien
+    function renderRow(item, index) {
         const score = normalizeScore(item.Score);
         const name = safe(item.CandidateName);
         const avatarColor = item.AvatarColor || '#48aef7';
         const avatar = `<span class="avatar" style="background:${avatarColor}">${initials(name)}</span>`;
+        const sourceIndex = typeof item._sourceIndex === 'number' ? item._sourceIndex : index;
 
         return `
             <tr>
@@ -74,12 +80,13 @@
                 <td>${safe(item.ProbationInfoStatus)}</td>
                 <td>${item.IsTalentPoolDetail ? 'Có' : 'Không'}</td>
                 <td class="has-edit">
-                    <button class="row-edit-btn" type="button" aria-label="Chỉnh sửa">✎</button>
+                    <button class="row-edit-btn" data-index="${sourceIndex}" type="button" aria-label="Chỉnh sửa">✎</button>
                 </td>
             </tr>
         `;
     }
 
+    // Cap nhat tong so ban ghi hien thi
     function updateTotal(count) {
         const totalEl = document.querySelector('.total-records');
         if (totalEl) {
@@ -88,6 +95,7 @@
         }
     }
 
+    // To hop style khi check tung dong
     function toggleRowState(checkbox, state) {
         const row = checkbox.closest('tr');
         if (row) {
@@ -95,6 +103,7 @@
         }
     }
 
+    // Gan su kien chon tat ca va tung checkbox
     function wireSelection(tbody) {
         const selectAll = document.getElementById('select-all');
         if (selectAll && !selectionWired) {
@@ -117,6 +126,7 @@
         }
     }
 
+    // Render bang ung vien tu mang du lieu
     function renderTable(items) {
         const tbody = document.getElementById('candidate-body');
         if (!tbody) return;
@@ -124,11 +134,12 @@
         const selectAll = document.getElementById('select-all');
         if (selectAll) selectAll.checked = false;
 
-        tbody.innerHTML = items.map(renderRow).join('');
+        tbody.innerHTML = items.map((item, idx) => renderRow(item, idx)).join('');
         updateTotal(items.length);
         wireSelection(tbody);
     }
 
+    // Loc ung vien theo tu khoa ten/email/so dien thoai
     function filterCandidates(term) {
         const keyword = (term || '').trim().toLowerCase();
         if (!keyword) {
@@ -142,6 +153,7 @@
         renderTable(filtered);
     }
 
+    // Bat su kien input search
     function bindSearch() {
         const searchInput = document.querySelector('.table-search-input');
         if (!searchInput) return;
@@ -150,12 +162,16 @@
         });
     }
 
+    // GoI API local candidate.json va render
     async function loadCandidates() {
         try {
             const response = await fetch(DATA_URL);
             if (!response.ok) throw new Error(`HTTP ${response.status}`);
             const payload = await response.json();
-            allCandidates = (payload?.Data?.PageData || []).slice(0, ROW_LIMIT);
+            allCandidates = (payload?.Data?.PageData || []).slice(0, ROW_LIMIT).map(function (item, idx) {
+                item._sourceIndex = idx;
+                return item;
+            });
             renderTable(allCandidates);
             bindSearch();
         } catch (err) {
@@ -164,4 +180,12 @@
     }
 
     document.addEventListener('DOMContentLoaded', loadCandidates);
+
+    window.candidateTableApi = {
+        getCandidateByIndex: function (index) {
+            return allCandidates[index];
+        }
+    };
 })();
+
+

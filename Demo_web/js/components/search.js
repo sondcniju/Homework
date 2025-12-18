@@ -1,4 +1,4 @@
-﻿// Simple search for candidate table with highlight
+// Simple search for candidate table with highlight
 
 document.addEventListener('DOMContentLoaded', function () {
     const input = document.querySelector('.table-search-input');
@@ -14,24 +14,28 @@ document.addEventListener('DOMContentLoaded', function () {
         r._orig = cells.map(td => td.textContent);
     });
 
+    // To highlight cac tu khoa
     function highlightText(text, terms) {
         const pattern = new RegExp('(' + terms.map(t => escapeRegExp(t)).join('|') + ')', 'ig');
         return text.replace(pattern, '<mark class="hl">$1</mark>');
     }
 
+    // Escape regex cho tu khoa
     function escapeRegExp(str) {
         return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
+    // Cap nhat counter tong/loc
     function updateCount() {
         if (!totalEl) return;
         const visible = rows.filter(r => r.style.display !== 'none').length;
         const totalData = totalEl.dataset.totalCount || rows.length;
         const total = Number(totalData) || rows.length;
         const prefix = total && total !== visible ? `${visible}/${total}` : `${visible}`;
-        totalEl.textContent = `Tổng: ${prefix} bản ghi`;
+        totalEl.textContent = `T?ng: ${prefix} b?n ghi`;
     }
 
+    // Loc cac dong theo tu khoa
     function filterRows(q) {
         const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
 
@@ -57,3 +61,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // initialize count
     updateCount();
 });
+

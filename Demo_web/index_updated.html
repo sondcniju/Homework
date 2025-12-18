@@ -203,9 +203,9 @@
 
     <!-- Popup Modal -->
     <div id="popup" class="popup-overlay" style="display: none;">
-        <div class="popup-content">
+        <div class="popup-content display-flex flex-direction-column">
             <span class="close-btn" onclick="hidePopup()">&times;</span>
-            <h2>Thêm ứng viên</h2>
+            <div class="popup-title display align-items-left">Thêm ứng viên</div>
             <form id="candidate-form">
                 <div class="drag-drop-area">
                     Kéo thả hoặc bấm vào đây để tải CV lên<br>
@@ -374,15 +374,18 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="cancel-btn" onclick="hidePopup()">Hủy</button>
-                <button type="submit" class="save-btn">Lưu</button>
             </form>
+            <div class="popup-footer display-flex justify-flex-end">
+                    <button type="button" class="pop-cancel-btn" onclick="hidePopup()">Hủy</button>
+                    <button type="submit" class="pop-save-btn">Lưu</button>
+            </div>
         </div>
     </div>
 
 
     <script src="js/components/candidateTable.js"></script>
-    <script src="js/components/popup.js"></script>
+    <script src="js/components/Popup/popup.js"></script>
+    <script src="js/components/Popup/popupEdit.js"></script>
     <script src="js/components/validate.js"></script>
     <script src="js/components/search.js"></script>
     <script src="js/test.js"></script>

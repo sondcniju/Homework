@@ -302,12 +302,15 @@
 }
 
 .table-footer {
-    border-top: 1px solid var(--border);
-    padding: 10px 12px;
-    font-size: 14px;
-    color: var(--muted);
-    background: #fff;
+   width: 100% !important;
+    height: 56px !important;
+    padding: 9px 24px !important;
+    border-top: 1px solid #dddde4;
+    background-color: #f1f2f5 !important;
+    position: sticky;
+    z-index: 1;
 }
+
 
 .pill {
     background: #f5f6f8;
@@ -425,22 +428,7 @@
     margin-top: 12px;
 }
 
-.cancel-btn {
-    border: 1px solid var(--border);
-    background: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
 
-.save-btn {
-    border: none;
-    background: var(--primary);
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
 
 .hl {
     background: #fff4b1;
