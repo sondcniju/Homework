@@ -1,0 +1,188 @@
+/* Sidebar token */
+:root {
+    --sidebar-w: 233px;
+    --sidebar-collapsed-w: 72px;
+}
+
+/* Sidebar wrapper */
+.sidebar {
+    height: 100%;
+    min-width: var(--sidebar-w);
+    width: var(--sidebar-w);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sidebar overlay */
+.sidebar-inner {
+    height: calc(100% + 48px);
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 16px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar background carrier */
+.sidebar-image {
+    background: rgba(0, 0, 0, 0.3);
+    background-image: url(../images/event-sidebar.86fc6daf7938e471.svg);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #051529; /* nen toi */
+    height: calc(100% + 48px);
+    width: 100%;
+}
+
+/* Sidebar menu container */
+.sidebar .sidebar-inner .sidebar-menu {
+    color: #c5ccd5;
+    border-radius: 4px;
+    margin-top: unset;
+}
+
+/* Menu item */
+.nav-item {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    min-width: 209px;
+    gap: 10px;
+    margin: 0 12px 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #d8dce3;
+    text-decoration: none;
+    cursor: pointer;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+/* Menu item icon */
+.nav-item .icon {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    filter: brightness(0) invert(1);
+    display: inline-block;
+}
+
+/* Hover va active item */
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+}
+
+.nav-item.active {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* Nhan item dung elip khi collapse */
+.nav-item .label {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Sidebar footer va nut collapse */
+.sidebar-footer {
+    position: absolute;
+    bottom: 16px;
+    padding: 0 12px;
+}
+
+.collapse-btn {
+    border: 1px solid white;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    height: 40px;
+    min-width: 209px;
+    gap: 10px;
+}
+
+.collapse-btn.label-btn{
+    font-weight: 500;
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+.collapse-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.collapse-btn .chev {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.collapse-btn .label {
+    font-weight: 600;
+}
+
+/* Trang thai collapsed */
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed-w);
+    min-width: var(--sidebar-collapsed-w);
+}
+
+.sidebar.collapsed .sidebar-image,
+.sidebar.collapsed .sidebar-inner {
+    width: var(--sidebar-collapsed-w);
+}
+
+/* Menu item khi collapsed */
+.sidebar.collapsed .nav-item {
+    width: auto;
+    min-width: 0;
+    margin: 0 8px 12px;
+    padding: 8px;
+    justify-content: center;
+}
+
+/* An label trong collapsed */
+.sidebar.collapsed .nav-item .label ,.sidebar.collapsed .label-btn{
+    display: none;
+}
+
+/* An text dropdown khi collapsed */
+.sidebar.collapsed .nav-dropdown-toggle span:not(.icon) {
+    display: none;
+}
+
+/* Active trong collapsed giu pill xanh */
+.sidebar.collapsed .nav-item.active {
+    background: var(--primary);
+}
+
+/* Footer button chi con icon */
+.sidebar.collapsed .collapse-btn {
+    height: 40px;
+    width: 48px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+}
+
+.sidebar.collapsed .collapse-btn .label {
+    display: none;
+}
+
+/* An caret dropdown khi collapsed */
+.sidebar.collapsed .nav-dropdown-toggle .caret {
+    display: none;
+}
+
+/* Icon trong collapsed giu canh */
+.sidebar.collapsed .nav-item .icon {
+    display: inline-block !important;
+    margin: 0 !important;
+}

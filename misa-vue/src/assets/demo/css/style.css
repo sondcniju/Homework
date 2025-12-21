@@ -1,0 +1,238 @@
+/* Bien mau va token */
+:root {
+    --primary: #2f80ed;
+    --primary-dark: #2567c6;
+    --sidebar-start: #3c4652;
+    --sidebar-end: #3c4652;
+    --accent: #f5b7b1;
+    --bg: #e8eaef;
+    --card: #ffffff;
+    --border: #e6e8ef;
+    --muted: #6b7280;
+    --text: #1f2d3d;
+    --warn: #fff1ed;
+    --safe: #f5fbf2;
+}
+
+/* Reset box sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* Co ban html body */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow: hidden;
+    /* chan scroll toan trang */
+}
+
+/* Khung ung dung */
+.app {
+    height: 100vh;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1100;
+    min-width: 1000px;
+    overflow: auto;
+}
+
+/* Header ung dung */
+.app-header {
+    height: 48px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    gap: 16px
+}
+
+/* Than ung dung */
+.app-body {
+    position: relative;
+    height: calc(100% - 56px);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background-color: #ebecef;
+    z-index: -1;
+}
+
+/* Vung logo ben trai header */
+.header-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    width: auto;
+    min-width: 212px;
+}
+
+/* Nut phan header trai */
+.header-left-btn {
+    height: 100%;
+    min-width: 260px;
+    background-image: url("../images/navbar-bg-noel.ff04816e6511986f.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 16px;
+    border-radius: 5px;
+    margin: -16px;
+    overflow: hidden;
+    /* bat buoc de background khong tran */
+}
+
+/* Tieu de header */
+.header-text {
+     min-width:0;    
+}
+.header-text .header-name {
+    color: #1f1f1f;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    -webkit-user-select: none;
+    user-select: none;
+    margin-left: 0;
+    white-space: nowrap;
+}
+
+/* Icon trang tri header */
+.header-icon {
+    position: relative;
+    height: 48px;
+    width: 103px;
+}
+
+/* Nen icon trang tri */
+.header-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(../images/event-header.8a0adb3bd0c107ff.svg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Lop icon thuc te */
+.header-icon .icon-view {
+    position: absolute;
+    z-index: 0;
+}
+
+/* Nut chuc nang chung */
+.func-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+/* Thanh tim kiem header */
+.header-search-bar {
+    flex: 1;
+    min-width: 365px;
+    gap: 8px;
+    background: #f5f6f8;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 6px 16px;
+    height: 32px;
+}
+
+/* O nhap tim kiem */
+.header-search-bar .search-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    background: transparent;
+    font-size: 14px;
+    padding-left: 32px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+/* Cum ben phai header */
+.header-right {
+    gap: 30px;
+    width: auto;
+    min-width: 565px;
+    height: 50px;
+    margin-left: auto;
+    align-items: center;
+}
+
+/* Nhom link website */
+.website {
+    display: inline-flex;
+    gap: 20px;
+}
+
+/* Danh sach icon header */
+.header-icons {
+    gap: 20px;
+}
+
+/* Noi dung chinh */
+.main-content {
+    flex: 1;
+    padding: 16px 18px;
+    overflow: hidden;
+    gap: 12px;
+    min-height: 0;
+}
+
+/* Thanh tieu de trang */
+.page-bar {
+    margin-bottom: 10px;
+}
+
+/* Tieu de trang */
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Hanh dong trang */
+.page-actions {
+    gap: 10px;
+}
+
+/* Nut primary */
+.primary-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    height: 40px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    gap: 10px;
+}
+
+/* Trang thai hover nut primary */
+.primary-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* Icon trong nut primary */
+.primary-btn .btn-icon {
+    font-size: 18px;
+    line-height: 0;
+}
+
+/* Mui ten trong nut primary */
+.primary-btn .btn-caret {
+    font-size: 12px;
+    opacity: .9;
+
+}

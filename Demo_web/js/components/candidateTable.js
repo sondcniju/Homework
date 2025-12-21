@@ -49,7 +49,7 @@
         const sourceIndex = typeof item._sourceIndex === 'number' ? item._sourceIndex : index;
 
         return `
-            <tr>
+            <tr data-index="${sourceIndex}">
                 <td class="col-checkbox"><input type="checkbox" class="row-select" aria-label="Chọn ứng viên"></td>
                 <td>${safe(item.Mobile)}</td>
                 <td>${safe(item.ChannelName)}</td>
@@ -187,5 +187,4 @@
         }
     };
 })();
-
 

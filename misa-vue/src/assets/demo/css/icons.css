@@ -1,0 +1,184 @@
+.icon{
+    width: 20px;
+    height: 20px;
+    background: url(../icons/ICON.svg) no-repeat;
+    
+}
+.icon-default {
+    width: 20px;
+    height: 20px;
+    background: url(../icons/ICON.svg) no-repeat;
+   
+    
+}
+
+.icon-sb-recrument{
+    width: 20px;
+    height: 20px;
+    background-position: -98px -114px;
+}
+.icon-candidate{
+    width: 20px;
+    height: 19px;
+    background-position: -26px -114px;
+}
+.icon-calendar{
+    width: 20px;
+    height: 20px;
+    background-position: -146px -114px;
+}
+.icon-storage{
+    width: 20px;
+    height: 20px;
+    background-position: -2px -114px;
+}
+.icon-marketing{
+    width: 22px;
+    height: 21px;
+    background-position: -73px -633px;
+    
+
+}
+.icon-job{
+    width: 20px;
+    height: 21px;
+    background-position: -338px -113px;
+}
+.icon-aimarketing{
+    width: 16px;
+    height: 13px;
+    background-position:  -262px -660px;
+    transform: scale(1);    
+}
+.icon-chat{
+    width: 18px;
+    height: 18px;
+    background-position: -75px -847px;
+    filter: brightness(0);
+}
+.icon-report{
+    width: 20px;
+    height: 20px;
+    background-position: -74px -114px;
+}
+.icon-settings{
+    width: 20px;
+    height: 20px;
+    background-position: -2px -138px;
+}
+.icon-ideas{
+    width: 24px;
+    height: 24px;
+    background-image: url(../icons/idea.svg);
+    
+}
+.icon-details{
+    width: 20px;
+    height: 18px;
+    background-position: -14px -47px;
+}
+.icon-view{
+    width: 54px;
+    height: 54px;
+    background-position: -53px -411px;
+    transform: scale(0.6);
+    margin-left: 24px;
+    margin-top: -4PX;
+}
+.icon-func{
+    width: 24px;
+	height: 24px;
+    min-width: 24px;
+    background-image: url(../icons/switch.svg);
+}
+
+.icon-search{
+    width: 14px;
+    height: 14px;
+    background-position: -283px -945px;
+}
+.icon-word{
+    width: 21px;
+    height: 21px;
+    background-position: 0 -608px;
+}
+.icon-bell{
+    width: 21px;
+    height: 21px;
+    background-position: -212px -942px;
+}
+.icon-question{
+    width: 20px;
+    height: 20px;
+    background-position: -236px -942px;
+}
+.icon-dot{
+    width: 20px;
+    height: 20px;
+    background-position: -260px -942px;
+}
+.icon-cart {
+	width: 20px;
+	height: 20px;
+    background-image: url(../icons/cs-icon-store.svg);
+}
+.icon-tripdot {
+	width: 18px;
+	height: 18px;
+    background-position: -75px -847px;
+}
+.icon-invite {
+	width: 24px;
+	height: 24px;
+    background-image: url(../icons/chat.svg);
+}
+
+.icon-person {
+	width: 24px;
+	height: 24px;
+    background-image: url(../icons/download.svg);
+}
+.icon-speaker {
+    width: 24px;
+	height: 24px;
+	background-image: url(../icons/icon-notification-version.d5e3dc604036ed5b.svg);
+}
+
+.icon-collapse{
+    width: 9px;
+	height: 14px;
+    background-position: -199px -141px;
+}
+.icon-exten{
+    width: 9px;
+	height: 14px;
+    background-position: -223px -141px;
+}
+
+.icon-extra{
+    width: 16px;
+	height: 4px;
+    background-position: -362px -624px;
+}
+.icon-ava{
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #f8f9fb;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+}
+
+.icon-shorten{
+    width: 9px;
+	height: 14px;
+    background-position: -199px -141px;
+        filter: brightness(0);
+
+}
+.icon-view-color{
+    color: black;
+}
+

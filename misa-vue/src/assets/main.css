@@ -1,0 +1,11 @@
+﻿@import "./demo/css/style.css";
+@import "./demo/css/common.css";
+@import "./demo/css/icons.css";
+@import "./demo/css/sidebar.css";
+@import "./demo/css/table.css";
+@import "./demo/css/popup.css";
+@import "./demo/css/collapsed.css";
+
+#app {
+  min-height: 100vh;
+}

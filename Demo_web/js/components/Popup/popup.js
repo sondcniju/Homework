@@ -9,7 +9,7 @@ function showPopup(mode) {
                 form.dataset.editIndex = '';
                 form.reset();
             }
-            const title = popup.querySelector('h2');
+            const title = popup.querySelector('.popup-title, h2');
             if (title) title.textContent = 'Them ung vien';
         }
         popup.style.display = 'flex';

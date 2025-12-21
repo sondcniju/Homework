@@ -16,6 +16,10 @@
         control.value = value ?? '';
     }
 
+    function getPopupTitleEl(form) {
+        return form.closest('#popup')?.querySelector('.popup-title, h2');
+    }
+
     function fillFormFromCandidate(form, candidate, index) {
         if (!candidate) return;
         if (window.candidateValidator?.clearValidationState) {
@@ -37,7 +41,7 @@
         form.dataset.mode = 'edit';
         form.dataset.editIndex = index != null ? String(index) : '';
 
-        const title = form.closest('#popup')?.querySelector('h2');
+        const title = getPopupTitleEl(form);
         if (title) title.textContent = 'Chinh sua ung vien';
     }
 
@@ -60,9 +64,30 @@
         openEditPopup(candidate, index);
     }
 
+    function handleFixedEditClick() {
+        const tbody = document.getElementById('candidate-body');
+        if (!tbody) return;
+        const selected = tbody.querySelector('.row-select:checked');
+        if (!selected) {
+            alert('Vui long chon 1 ung vien de sua.');
+            return;
+        }
+        const row = selected.closest('tr');
+        const index = Number(row?.dataset.index);
+        if (Number.isNaN(index)) return;
+        const candidate = window.candidateTableApi?.getCandidateByIndex(index);
+        if (!candidate) return;
+        openEditPopup(candidate, index);
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         const tbody = document.getElementById('candidate-body');
         if (!tbody) return;
         tbody.addEventListener('click', handleEditClick);
+
+        const fixedEditBtn = document.getElementById('fixed-edit-btn');
+        if (fixedEditBtn) {
+            fixedEditBtn.addEventListener('click', handleFixedEditClick);
+        }
     });
 })();

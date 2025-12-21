@@ -1,0 +1,169 @@
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.popup-overlay.is-open {
+    display: flex;
+}
+
+.popup-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 24px 16px 0 24px;
+
+}
+
+.popup-content {
+    background: #fff;
+    border-radius: 5px;
+    width: 560px;
+    height: auto;
+    max-height: 558.6px;
+    min-height: 0px;
+    overflow: auto;
+    position: relative;
+}
+
+.popup-footer {
+    width: 100% !important;
+    height: 56px !important;
+    padding: 9px 24px !important;
+    border-top: 1px solid #dddde4;
+    background-color: #f1f2f5 !important;
+    position: sticky;
+    z-index: 1;
+}
+
+.pop-cancel-btn {
+    width: 72px;
+    height: 36px;
+    position: relative;
+    border: 1px solid var(--border);
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.pop-save-btn {
+    width: 72px;
+    height: 36px;
+    border: none;
+    position: relative;
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #999;
+}
+
+#candidate-form {
+    padding: 24px;
+    flex: 1 1 auto;
+    /* cho nó chiếm phần còn lại */
+    overflow: auto;
+    /* scroll nằm ở đây (khuyến nghị) */
+}
+
+#candidate-form label {
+    font-size: 14px;
+    color: #555;
+}
+
+#candidate-form input,
+#candidate-form select,
+#candidate-form textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-top: 6px;
+}
+
+.drag-drop-area {
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    background: #f8f9fb;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 12px;
+    width: 510px;
+    min-width: 510px;
+    height: 98px;
+}
+
+.input-error {
+    border-color: #d93025 !important;
+}
+
+.field-error {
+    color: #d93025;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.form-content {
+    display: flex;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-half {
+    display: flex;
+}
+
+.form-image {
+    padding-top: 15px;
+
+}
+
+.form-basic {
+    margin: 8px;
+}
+
+.form-group-image {
+    width: 63px;
+    height: 63px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    background: #f8f9fb;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+}
+
+.input-with-icon,
+.input-with-icon-range {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.input-with-icon .calendar-icon,
+.input-with-icon-range .calendar-icon {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    font-style: normal;
+    color: var(--muted);
+}
