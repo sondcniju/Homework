@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 /* Bien mau va token */
 :root {
     --primary: #2f80ed;
@@ -32,6 +34,9 @@ body {
     /* chan scroll toan trang */
 }
 
+#app {
+  min-height: 100vh;
+}
 /* Khung ung dung */
 .app {
     height: 100vh;
@@ -54,12 +59,12 @@ body {
 /* Than ung dung */
 .app-body {
     position: relative;
-    height: calc(100% - 56px);
+    height: calc(100% - 48px);
     width: 100%;
     overflow: hidden;
     display: flex;
     background-color: #ebecef;
-    z-index: -1;
+    z-index: 0;
 }
 
 /* Vung logo ben trai header */
@@ -81,7 +86,6 @@ body {
     background-size: cover;
     padding-left: 16px;
     border-radius: 5px;
-    margin: -16px;
     overflow: hidden;
     /* bat buoc de background khong tran */
 }
@@ -89,9 +93,11 @@ body {
 /* Tieu de header */
 .header-text {
      min-width:0;    
+     margin-left: -12px;
 }
 .header-text .header-name {
     color: #1f1f1f;
+    font-family: Inter;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
@@ -112,14 +118,15 @@ body {
 /* Nen icon trang tri */
 .header-icon::before {
     content: "";
-    position: absolute;
     inset: 0;
     background-image: url(../images/event-header.8a0adb3bd0c107ff.svg);
     background-repeat: no-repeat;
-    background-position: left bottom;
+    background-position: bottom;
     background-size: contain;
+    position: absolute;
+    bottom: 0px;
     z-index: 1;
-    pointer-events: none;
+    margin-left: 9px;
 }
 
 /* Lop icon thuc te */
@@ -133,19 +140,20 @@ body {
     border: none;
     background-color: transparent;
     cursor: pointer;
-    margin-left: 16px;
 }
 
 /* Thanh tim kiem header */
 .header-search-bar {
     flex: 1;
     min-width: 365px;
-    gap: 8px;
     background: #f5f6f8;
     border: 1px solid var(--border);
     border-radius: 3px;
-    padding: 6px 16px;
     height: 32px;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    align-items: baseline;
 }
 
 /* O nhap tim kiem */
@@ -154,10 +162,14 @@ body {
     outline: none;
     flex: 1;
     background: transparent;
-    font-size: 14px;
-    padding-left: 32px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+
+    font-weight: 400;
+    font-family: Inter, Helvetica, Arial, sans-serif;
+    text-overflow: ellipsis;
+    border-radius: 3px;
+    min-height: 32px;
+    padding: 6px 16px;
+    font-size: 14px !important;
 }
 
 /* Cum ben phai header */
@@ -173,7 +185,7 @@ body {
 /* Nhom link website */
 .website {
     display: inline-flex;
-    gap: 20px;
+    gap: 10px;
 }
 
 /* Danh sach icon header */
@@ -184,9 +196,8 @@ body {
 /* Noi dung chinh */
 .main-content {
     flex: 1;
-    padding: 16px 18px;
+    padding: 24px;
     overflow: hidden;
-    gap: 12px;
     min-height: 0;
 }
 

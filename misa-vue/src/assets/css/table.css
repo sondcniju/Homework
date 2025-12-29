@@ -13,16 +13,37 @@
 }
 
 .table-toolbar {
-    padding: 12px 12px;
+   padding: 16px 24px 16px 24px !important;
     border-bottom: 1px solid var(--border);
     gap: 10px;
 }
 
+
 .toolbar-left {
-    gap: 10px;
+    width: 200px;
     flex-wrap: wrap;
 }
+.text-container{
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    align-items: baseline;
+}
 
+.btn-container{
+        display: flex;
+    width: auto;
+    flex-grow: 0;
+    flex-basis: content;
+    align-items: center;
+}
+.btn-content{
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 .table-search {
     gap: 8px;
     border: 1px solid var(--border);
@@ -66,14 +87,17 @@
     min-height: 0;
     overflow-x: auto;
     overflow-y: auto;
-    
+
 }
 
-.candidate-table-wrapper::-webkit-scrollbar{
-  width: 0px;     /* ẩn dọc */
+.candidate-table-wrapper::-webkit-scrollbar {
+    width: 0px;
+    /* ẩn dọc */
 }
-.candidate-table-wrapper::-webkit-scrollbar:horizontal{
-  height: 10px;   /* vẫn hiện ngang */
+
+.candidate-table-wrapper::-webkit-scrollbar:horizontal {
+    height: 10px;
+    /* vẫn hiện ngang */
 }
 
 .candidate-table {
@@ -94,25 +118,198 @@
     text-align: left;
     font-weight: 700;
     padding: 12px 12px;
-    border-bottom: 1px solid var(--border);
-    border-right: 1px solid var(--border);
+    border-bottom: none;
+    border-right: none;
     white-space: nowrap;
     color: #111827;
+    position: relative;
 }
 
 .candidate-table td {
     padding: 12px 12px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: none;
     vertical-align: middle;
     white-space: nowrap;
 }
 
-.candidate-table tr:hover td {
-    background: #f6f9ff;
+.candidate-table .col-checkbox {
+    width: 44px;
 }
 
-.col-checkbox {
-    width: 32px;
+.candidate-table .col-phone {
+    min-width: 140px;
+}
+
+.candidate-table .col-source {
+    min-width: 160px;
+}
+
+.candidate-table .col-name {
+    min-width: 220px;
+    width: 220px;
+    max-width: 220px;
+}
+
+.candidate-table .col-email {
+    min-width: 220px;
+}
+
+.candidate-table .col-campaign {
+    min-width: 220px;
+}
+
+.candidate-table .col-position {
+    min-width: 200px;
+}
+
+.candidate-table .col-recruitment {
+    min-width: 200px;
+}
+
+.candidate-table .col-round {
+    min-width: 160px;
+}
+
+.candidate-table .col-rating {
+    min-width: 120px;
+    text-align: center;
+}
+
+.candidate-table .col-apply-date {
+    min-width: 140px;
+}
+
+.candidate-table .col-edu-level {
+    min-width: 170px;
+}
+
+.candidate-table .col-edu-school {
+    min-width: 220px;
+}
+
+.candidate-table .col-edu-major {
+    min-width: 180px;
+}
+
+.candidate-table .col-recent-workplace {
+    min-width: 240px;
+}
+
+.candidate-table .col-recruiter {
+    min-width: 190px;
+}
+
+.candidate-table .col-org-unit {
+    min-width: 190px;
+}
+
+.candidate-table .col-profile-fit {
+    min-width: 190px;
+}
+
+.candidate-table .col-area {
+    min-width: 150px;
+}
+
+.candidate-table .col-presenter {
+    min-width: 180px;
+}
+
+.candidate-table .col-intake {
+    min-width: 190px;
+}
+
+.candidate-table .col-actions {
+    min-width: 100px;
+}
+
+.candidate-table .col-checkbox {
+    width: 44px;
+}
+
+.candidate-table .col-phone {
+    min-width: 140px;
+}
+
+.candidate-table .col-source {
+    min-width: 160px;
+}
+
+.candidate-table .col-email {
+    min-width: 220px;
+}
+
+.candidate-table .col-campaign {
+    min-width: 220px;
+}
+
+.candidate-table .col-position {
+    min-width: 120px;
+}
+
+.candidate-table .col-recruitment {
+    min-width: 200px;
+}
+
+.candidate-table .col-round {
+    min-width: 160px;
+}
+
+.candidate-table .col-rating {
+    min-width: 120px;
+    text-align: center;
+}
+
+.candidate-table .col-apply-date {
+    min-width: 140px;
+}
+
+.candidate-table .col-edu-level {
+    min-width: 170px;
+}
+
+.candidate-table .col-edu-school {
+    min-width: 220px;
+}
+
+.candidate-table .col-edu-major {
+    min-width: 180px;
+}
+
+.candidate-table .col-recent-workplace {
+    min-width: 240px;
+}
+
+.candidate-table .col-recruiter {
+    min-width: 190px;
+}
+
+.candidate-table .col-org-unit {
+    min-width: 190px;
+}
+
+.candidate-table .col-profile-fit {
+    min-width: 190px;
+}
+
+.candidate-table .col-area {
+    min-width: 150px;
+}
+
+.candidate-table .col-presenter {
+    min-width: 180px;
+}
+
+.candidate-table .col-intake {
+    min-width: 190px;
+}
+
+.candidate-table tr:hover td {
+    background: #e1eeff;
+}
+
+.candidate-table tr:hover .has-edit {
+    background: #e1eeff;
 }
 
 .row-warn td {
@@ -124,7 +321,7 @@
 }
 
 .row-selected td {
-    background: #ffe8d8 !important;
+    background: #e1eeff !important;
 }
 
 .has-edit {
@@ -133,7 +330,7 @@
     background: #fff;
     z-index: 2;
     padding-right: 52px;
-    min-width: 140px;
+    min-width: 120px;
 }
 
 .row-warn .has-edit {
@@ -145,7 +342,15 @@
 }
 
 .row-selected .has-edit {
-    background: #ffe8d8 !important;
+    background: #e1eeff !important;
+}
+
+.candidate-table tr.row-selected:hover td {
+    background: #d6e8ff !important;
+}
+
+.candidate-table tr.row-selected:hover .has-edit {
+    background: #d6e8ff !important;
 }
 
 .row-edit-btn {
@@ -173,15 +378,31 @@
     pointer-events: auto;
 }
 
+.col-resizer {
+    position: absolute;
+    top: 0;
+    right: -3px;
+    width: 6px;
+    height: 100%;
+    cursor: col-resize;
+    user-select: none;
+}
+
+.col-resizer:hover {
+    background: rgba(17, 24, 39, 0.08);
+}
+
 .cell-person {
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 220px;
 }
 
 .avatar {
     width: 32px;
     height: 32px;
+    flex: 0 0 32px;
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -235,9 +456,45 @@
     color: #6a4d00;
 }
 
+
+
+.person-meta {
+    position: relative;
+    min-width: 0;
+    flex: 1;
+}
+
 .person-meta .name {
-    font-weight: 600;
-    color: #222;
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.person-meta::after {
+    content: attr(data-fullname);
+    position: absolute;
+    left: 0;
+    top: 130%;
+    max-width: 320px;
+    padding: 6px 10px;
+    background: #111827;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 6px;
+    white-space: normal;
+    line-height: 1.4;
+    box-shadow: 0 8px 16px rgba(0,0,0,.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease;
+    z-index: 999;
+}
+
+.person-meta:hover::after {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .muted {
@@ -302,7 +559,7 @@
 }
 
 .table-footer {
-   width: 100% !important;
+    width: 100% !important;
     height: 56px !important;
     padding: 9px 24px !important;
     border-top: 1px solid #dddde4;
@@ -311,11 +568,6 @@
     z-index: 1;
 }
 
-
-.pill {
-    background: #f5f6f8;
-    color: var(--text);
-}
 
 .pagination-controls {
     gap: 6px;
@@ -438,13 +690,8 @@
     overflow: auto;
 }
 
-/* Checkbox like AMIS */
 .candidate-table input[type="checkbox"] {
     width: 18px;
     height: 18px;
     accent-color: var(--primary);
-}
-
-.col-checkbox {
-    width: 44px;
 }

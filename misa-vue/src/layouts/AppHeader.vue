@@ -22,7 +22,7 @@ const handleSearch = (event) => {
 <template>
   <header class="app-header display-flex align-items-center">
     <div class="header-left display-flex align-items-center justify-content-between">
-      <div class="header-left-btn display-flex align-items-center justify-content-between">
+      <div class="header-left-btn display-flex align-items-center ">
         <button class="icon icon-func func-btn" type="button" aria-label="Chức năng"></button>
         <div class="header-icon">
           <div class="icon icon-view"></div>
@@ -32,7 +32,7 @@ const handleSearch = (event) => {
         </div>
       </div>
       <div class="header-search-bar display-flex align-items-center">
-        <div class="icon icon-search small"></div>
+        <div class="icon icon-search"></div>
         <input
           type="text"
           class="search-input"
@@ -63,60 +63,4 @@ const handleSearch = (event) => {
   </header>
 </template>
 
-<style scoped>
-.app-header {
-      height: 48px;
-    background: #ffffff;
-    display: flex
-;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    justify-content: space-between;
-    padding-left: 16px;
-    padding-right: 14px;
-}
 
-.header-left {
-  flex: 1;
-  min-width: 0;
-  gap: 12px;
-}
-
-.header-left-btn {
-  flex-shrink: 0;
-  min-width: 230px;
-}
-
-.header-text {
-      margin-left: 12px;
-    margin-right: 24px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #1f1f1f;
-    font-family: Inter;
-    line-height: normal;
-}
-
-.header-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.header-search-bar {
-        margin-left: 8px;
-    margin-top: 1px;
-    font-size: 14px;
-    color: #9e9e9e;
-    font-family: Inter, sans-serif;
-}
-
-.header-right {
-  flex-shrink: 0;
-}
-
-.header-spacer {
-  width: 138px;
-  margin-right: 16px;
-  flex-shrink: 0;
-}
-</style>

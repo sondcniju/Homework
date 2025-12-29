@@ -1,0 +1,107 @@
+.nav-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-submenu .nav-item {
+    padding-left: 28px;
+}
+
+.nav-submenu.is-collapsed {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-submenu.is-open {
+    max-height: 400px;
+    opacity: 1;
+}
+
+.collapse-label {
+    font-family: Inter;
+    color: #fff !important;
+    font-weight: 500;
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+.sidebar-collapse-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #d8dce3;
+    padding: 10px 12px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.sidebar-collapse-btn .collapse-caret {
+    margin-left: auto;
+    display: none;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
+}
+
+.sidebar-collapse-btn .icon {
+    filter: brightness(0) invert(1);
+}
+
+.sidebar.collapsed {
+    width: var(--sidebar-collapsed-w);
+    min-width: var(--sidebar-collapsed-w);
+}
+
+.sidebar.collapsed .sidebar-inner {
+    padding-top: 32px;
+    padding-bottom: 16px;
+}
+
+.sidebar.collapsed .nav-item,
+.sidebar.collapsed .nav-dropdown-toggle {
+    justify-content: center;
+    gap: 0;
+    margin: 12px;
+    padding: 8px 12px;
+    margin-top: unset;
+    width: auto;
+    min-width: 0;
+}
+
+.sidebar.collapsed .nav-item span:not(.icon),
+.sidebar.collapsed .nav-dropdown-toggle span:not(.icon) {
+    display: none;
+}
+
+.sidebar.collapsed .nav-dropdown-toggle .caret {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-collapse-btn {
+    justify-content: center;
+    width: 48px;
+    height: 40px;
+    padding: 8px;
+}
+
+.sidebar.collapsed .sidebar-collapse-btn .collapse-label {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-collapse-btn .collapse-main-icon {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-collapse-btn .collapse-caret {
+    display: inline-block;
+    margin-left: 0;
+    transform: rotate(180deg);
+    font-size: 18px;
+    line-height: 1;
+    color: #fff;
+}
