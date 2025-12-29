@@ -26,7 +26,7 @@
 /* Sidebar background carrier */
 .sidebar-image {
     background: rgba(0, 0, 0, 0.3);
-    background-image: url(/Demo_web/images/event-sidebar.86fc6daf7938e471.svg);
+    background-image: url(../images/event-sidebar.86fc6daf7938e471.svg);
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,14 +41,25 @@
     border-radius: 4px;
     margin-top: unset;
 }
-
+.sidebar-item{
+    font-weight: 500;
+    position: relative;
+    font-size: 14px;
+}
+.item-content{
+    color: #c5ccd5;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 12px;
+    margin-top: unset;
+}
 /* Menu item */
 .nav-item {
     display: flex;
     align-items: center;
     height: 40px;
     min-width: 209px;
-    gap: 10px;
+    gap: 12px;
     margin: 0 12px 12px;
     padding: 8px 12px;
     border-radius: 6px;
@@ -64,9 +75,6 @@
 
 /* Menu item icon */
 .nav-item .icon {
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
     filter: brightness(0) invert(1);
     display: inline-block;
 }
@@ -81,6 +89,8 @@
     background: var(--primary);
     color: #fff;
 }
+
+
 
 /* Nhan item dung elip khi collapse */
 .nav-item .label {
@@ -104,7 +114,6 @@
     background-color: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
-    height: 40px;
     min-width: 209px;
     gap: 10px;
 }
@@ -124,8 +133,13 @@
     line-height: 1;
 }
 
-.collapse-btn .label {
-    font-weight: 600;
+.collapse-caret {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.collape-main-icon {
+    display: inline-block;
 }
 
 /* Trang thai collapsed */
@@ -137,15 +151,6 @@
 .sidebar.collapsed .sidebar-image,
 .sidebar.collapsed .sidebar-inner {
     width: var(--sidebar-collapsed-w);
-}
-
-/* Menu item khi collapsed */
-.sidebar.collapsed .nav-item {
-    width: auto;
-    min-width: 0;
-    margin: 0 8px 12px;
-    padding: 8px;
-    justify-content: center;
 }
 
 /* An label trong collapsed */
@@ -167,13 +172,14 @@
 .sidebar.collapsed .collapse-btn {
     height: 40px;
     width: 48px;
+    min-width: 48px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 8px;
 }
 
-.sidebar.collapsed .collapse-btn .label {
-    display: none;
+.sidebar.collapsed .collape-main-icon {
+    transform: rotate(180deg);
 }
 
 /* An caret dropdown khi collapsed */
