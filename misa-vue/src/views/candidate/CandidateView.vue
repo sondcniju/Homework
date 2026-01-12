@@ -4,134 +4,35 @@ import AppBody from '@/layouts/AppBody.vue'
 import CandidatePopup from '@/views/candidate/CandidatePopup.vue'
 import Table from '@/components/tableDetail.vue'
 import Search from '@/components/searchBar.vue'
+import { CANDIDATE_SEARCH_KEYS, EMPTY_VALUE, PAGE_SIZE_OPTIONS, STORAGE_KEY } from '@/constants/candidate'
+import { CandidatePopupMode, NoticeType } from '@/enums/candidate'
+import { mapCandidates, normalizeCandidateRow } from '@/utils/candidate'
+import { readArrayFromStorage, writeJsonToStorage } from '@/utils/storage'
 
 const isPopupOpen = ref(false)
-const popupMode = ref('create')
+const popupMode = ref(CandidatePopupMode.CREATE)
 const notice = ref({ type: '', message: '' })
 let noticeTimer = null
 
-const avatarClasses = ['sky', 'neutral', 'gold', 'blue', 'yellow', 'green', 'grey', 'orange', 'tomato', 'amber']
-
-const formatValue = (value) => {
-  if (value === null || value === undefined || value === '') return '--'
-  return String(value)
-}
-
-const formatDate = (value) => {
-  if (!value) return '--'
-  const dateOnly = String(value).split('T')[0]
-  return dateOnly || '--'
-}
-
-const getInitials = (name) => {
-  if (!name) return '--'
-  const parts = name.trim().split(/\s+/).filter(Boolean)
-  if (parts.length === 0) return '--'
-  const first = parts[0][0] || ''
-  const last = parts.length > 1 ? parts[parts.length - 1][0] : ''
-  return (first + last).toUpperCase()
-}
-
-// =====================
-// LocalStorage datasource (tạm thời thay API)
-// =====================
-const STORAGE_KEY = 'candidates_v1'
+// LocalStorage-backed data source.
 const candidates = ref([])
-
-const safeJsonParse = (text, fallback) => {
-  try {
-    return JSON.parse(text)
-  } catch {
-    return fallback
-  }
-}
-
-const readCandidatesFromStorage = () => {
-  const raw = localStorage.getItem(STORAGE_KEY)
-  const parsed = safeJsonParse(raw ?? '[]', [])
-  return Array.isArray(parsed) ? parsed : []
-}
-
-const writeCandidatesToStorage = (items) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(items ?? []))
-}
-
-// NOTE: mapCandidates giữ lại để seed dữ liệu từ file json (nếu bạn còn dùng)
-const mapCandidates = (items = []) =>
-  items.map((item, index) => ({
-    id: item.CandidateID ?? `${item.CandidateName}-${index}`,
-    name: formatValue(item.CandidateName),
-    avatar: getInitials(item.CandidateName || ''),
-    avatarClass: avatarClasses[index % avatarClasses.length],
-    pill: null,
-    phone: formatValue(item.Mobile),
-    source: formatValue(item.ChannelName),
-    email: formatValue(item.Email),
-    campaign: formatValue(item.RecruitmentCampaignNames),
-    position: formatValue(item.JobPositionName),
-    recruitment: formatValue(item.RecruitmentName),
-    round: formatValue(item.RecruitmentRoundName),
-    rating: item.Overall ?? item.Score ?? 0,
-    applyDate: formatDate(item.ApplyDate),
-    eduLevel: formatValue(item.EducationDegreeName),
-    eduSchool: formatValue(item.EducationPlaceName),
-    eduMajor: formatValue(item.EducationMajorName),
-    recentWorkplace: formatValue(item.WorkPlaceRecent),
-    recruiter: formatValue(item.AttractivePersonnel),
-    orgUnit: formatValue(item.OrganizationUnitName),
-    profileFit: formatValue(item.CandidateStatusName),
-    area: formatValue(item.AreaName),
-    presenter: formatValue(item.PresenterName),
-    intakeInfo: formatValue(item.ProbationInfoStatus),
-    rowClass: '',
-  }))
-
-// UI rows (đúng schema đang render ở table) lưu trực tiếp vào LocalStorage.
-const normalizeCandidateRow = (row, index = 0) => ({
-  id: row?.id ?? `cand_${Date.now()}_${Math.floor(Math.random() * 10000)}`,
-  name: formatValue(row?.name),
-  avatar: getInitials(row?.name || ''),
-  avatarClass: row?.avatarClass ?? avatarClasses[index % avatarClasses.length],
-  pill: row?.pill ?? null,
-  phone: formatValue(row?.phone),
-  source: formatValue(row?.source),
-  email: formatValue(row?.email),
-  campaign: formatValue(row?.campaign),
-  position: formatValue(row?.position),
-  recruitment: formatValue(row?.recruitment),
-  round: formatValue(row?.round),
-  rating: Number(row?.rating ?? 0),
-  applyDate: formatValue(row?.applyDate),
-  eduLevel: formatValue(row?.eduLevel),
-  eduSchool: formatValue(row?.eduSchool),
-  eduMajor: formatValue(row?.eduMajor),
-  recentWorkplace: formatValue(row?.recentWorkplace),
-  recruiter: formatValue(row?.recruiter),
-  orgUnit: formatValue(row?.orgUnit),
-  profileFit: formatValue(row?.profileFit),
-  area: formatValue(row?.area),
-  presenter: formatValue(row?.presenter),
-  intakeInfo: formatValue(row?.intakeInfo),
-  rowClass: row?.rowClass ?? '',
-})
 
 const setCandidates = (items) => {
   const normalized = (items ?? []).map((it, idx) => normalizeCandidateRow(it, idx))
   candidates.value = normalized
-  writeCandidatesToStorage(normalized)
+  writeJsonToStorage(STORAGE_KEY, normalized)
 }
 
 const loadCandidates = async () => {
-  // 1) Ưu tiên LocalStorage
-  const stored = readCandidatesFromStorage()
+  // 1) Try LocalStorage first.
+  const stored = readArrayFromStorage(STORAGE_KEY)
   if (stored.length) {
     candidates.value = stored.map((it, idx) => normalizeCandidateRow(it, idx))
     selectedIndex.value = candidates.value.length ? 0 : 0
     return
   }
 
-  // 2) Nếu chưa có LocalStorage, có thể seed từ file json cũ (tuỳ bạn)
-  //    Nếu bạn không dùng seed nữa, có thể xoá đoạn fetch này.
+  // 2) Fallback to seed JSON (optional).
   try {
     const response = await fetch('/data/candidate.json', { cache: 'no-store' })
     if (!response.ok) throw new Error(`Failed to load candidate data: ${response.status}`)
@@ -147,7 +48,7 @@ const loadCandidates = async () => {
 }
 
 const candidateCount = computed(() => candidates.value.length)
-const pageSizeOptions = [15, 25, 50, 100]
+const pageSizeOptions = PAGE_SIZE_OPTIONS
 const pageSize = ref(25)
 const currentPage = ref(1)
 const pagedCandidates = computed(() => {
@@ -164,26 +65,7 @@ const pageRange = computed(() => {
 const selectedIndex = ref(0)
 const selectedIds = ref(new Set())
 const searchText = ref('')
-const candidateSearchKeys = [
-  'name',
-  'phone',
-  'email',
-  'source',
-  'campaign',
-  'position',
-  'recruitment',
-  'round',
-  'eduLevel',
-  'eduSchool',
-  'eduMajor',
-  'recentWorkplace',
-  'recruiter',
-  'orgUnit',
-  'profileFit',
-  'area',
-  'presenter',
-  'intakeInfo',
-]
+const candidateSearchKeys = CANDIDATE_SEARCH_KEYS
 
 const toggleSelectAll = (event) => {
   const shouldSelect = event.target.checked
@@ -206,7 +88,7 @@ const toggleRowSelection = (candidateId, event) => {
   selectedIds.value = next
 }
 
-const isMuted = (value) => value === '--'
+const isMuted = (value) => value === EMPTY_VALUE
 
 const candidateColumns = [
   {
@@ -244,7 +126,7 @@ const candidateColumns = [
   { key: 'actions', label: 'Thao tác', class: 'has-edit col-actions', resizable: false },
 ]
 
-const popupTitle = computed(() => (popupMode.value === 'edit' ? 'Chỉnh sửa thông tin ứng viên' : 'Thêm ứng viên'))
+const popupTitle = computed(() => (popupMode.value === CandidatePopupMode.EDIT ? 'Chỉnh sửa thông tin ứng viên' : 'Thêm ứng viên'))
 
 // Lưu id đang edit để submit update đúng record
 const editingId = ref(null)
@@ -284,7 +166,7 @@ const normalizeFormValue = (value) => (isMuted(value) ? '' : value)
 const collectCandidateData = () => ({ ...formData })
 
 const openPopup = () => {
-  popupMode.value = 'create'
+  popupMode.value = CandidatePopupMode.CREATE
   editingId.value = null
   resetFormData()
   isPopupOpen.value = true
@@ -294,7 +176,7 @@ const openEditPopup = async (index = selectedIndex.value) => {
   selectedIndex.value = index
   const candidate = pagedCandidates.value[index]
   if (!candidate) return
-  popupMode.value = 'edit'
+  popupMode.value = CandidatePopupMode.EDIT
   editingId.value = candidate.id
   isPopupOpen.value = true
   await nextTick()
@@ -321,7 +203,7 @@ const selectCandidate = (index) => {
 
 const closePopup = () => {
   isPopupOpen.value = false
-  // không xoá formData ở đây để user đóng mở lại vẫn còn (tuỳ bạn). Nếu muốn reset thì mở comment.
+  // Keep form data when closing so users can resume editing.
   // resetFormData()
 }
 
@@ -350,7 +232,7 @@ const handleSubmit = (event) => {
 
   // VALIDATE
   if (!payload.name?.trim()) {
-    notice.value = { type: 'error', message: 'Lưu không thành công. Vui lòng nhập họ và tên.' }
+    notice.value = { type: NoticeType.ERROR, message: 'Lưu không thành công. Vui lòng nhập họ và tên.' }
     clearTimeout(noticeTimer)
     noticeTimer = setTimeout(() => {
       notice.value = { type: '', message: '' }
@@ -361,11 +243,11 @@ const handleSubmit = (event) => {
   // SAVE -> LocalStorage
   const current = [...candidates.value]
 
-  if (popupMode.value === 'edit' && editingId.value) {
+  if (popupMode.value === CandidatePopupMode.EDIT && editingId.value) {
     const idx = current.findIndex((c) => c.id === editingId.value)
     if (idx !== -1) {
       const updated = buildRowFromForm(payload, current[idx])
-      // giữ lại avatarClass cũ để không bị đổi màu mỗi lần sửa
+      // Preserve avatarClass when updating an existing row.
       updated.avatarClass = current[idx].avatarClass
       updated.id = current[idx].id
       current[idx] = normalizeCandidateRow(updated, idx)
@@ -373,7 +255,7 @@ const handleSubmit = (event) => {
   } else {
     const created = buildRowFromForm(payload)
     created.id = (globalThis.crypto?.randomUUID?.() ?? created.id)
-    // set avatarClass theo thứ tự hiện tại
+    // Assign avatarClass for new rows.
     current.unshift(normalizeCandidateRow(created, 0))
   }
 
@@ -381,7 +263,7 @@ const handleSubmit = (event) => {
   currentPage.value = 1
   selectedIndex.value = 0
 
-  notice.value = { type: 'success', message: 'Lưu thành công.' }
+  notice.value = { type: NoticeType.SUCCESS, message: 'Lưu thành công.' }
   clearTimeout(noticeTimer)
   noticeTimer = setTimeout(() => {
     notice.value = { type: '', message: '' }

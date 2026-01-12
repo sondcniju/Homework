@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "o5qQ4UsZbJA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\SonDC\\Documents\\GitHub\\Homework\\Demo_asp\\Demo_asp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SonDC\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.1\\microsoft.aspnetcore.app.internal.assets.10.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

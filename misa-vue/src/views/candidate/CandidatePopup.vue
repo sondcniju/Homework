@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, defineEmits, toRef } from 'vue'
+import { AREA_OPTIONS, GENDER_OPTIONS } from '@/constants/candidate'
 
 const props = defineProps({
   isOpen: {
@@ -19,11 +20,8 @@ const props = defineProps({
 const emit = defineEmits(['close', 'submit'])
 const formData = toRef(props, 'formData')
 
-const genderOptions = [
-  { value: 'male', label: 'Nam' },
-  { value: 'female', label: 'Nu' },
-  { value: 'other', label: 'Khac' },
-]
+const genderOptions = GENDER_OPTIONS
+const areaOptions = AREA_OPTIONS
 </script>
 
 <template>
@@ -90,9 +88,9 @@ const genderOptions = [
                 <label for="area">Khu vực</label>
                 <div class="input-with-button">
                   <select id="area" name="area" class="select-with-button" v-model="formData.area">
-                    <option value="">Chọn giá trị</option>
-                    <option value="hn">Hà Nội</option>
-                    <option value="hcm">Hồ Chí Minh</option>
+                    <option v-for="option in areaOptions" :key="option.value" :value="option.value">
+                      {{ option.label }}
+                    </option>
                   </select>
                   <button type="button" class="more-options-btn">...</button>
                 </div>
